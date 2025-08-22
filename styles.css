@@ -1,0 +1,48 @@
+/* Custom font and dark theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #111827;
+    /* Dark gray background */
+    color: #F9FAFB;
+    /* Light gray text */
+}
+
+.card {
+    background-color: #1F2937;
+    /* Lighter gray for cards */
+    border: 1px solid #374151;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.stat-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stat-value2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: #9CA3AF;
+    /* Medium gray for labels */
+}
+
+.rate-red {
+    color: #F87171;
+}
+
+.rate-green {
+    color: #34D399;
+}
+
+.rate-orange {
+    color: #FBBF24;
+}

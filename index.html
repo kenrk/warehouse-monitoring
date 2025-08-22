@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Monitoring</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for the pie chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="p-4 sm:p-6 md:p-8">
+    <script src="script.js"></script>
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold">Warehouse Monitoring</h1>
+            <p id="current-date" class="text-lg text-gray-400 mt-1">Loading date...</p>
+        </header>
+
+        <!-- Main Grid Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- Left Column: Item Stats & Reports -->
+            <div class="lg:col-span-2 space-y-6">
+                
+                <!-- Item by Item Stats (Row Layout) -->
+                <div class="card divide-y divide-gray-600 p-0">
+                    <!-- Chasis -->
+                    <div id="chasis-stats" class="p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                        <h3 class="text-xl font-semibold text-white mb-4 sm:mb-0 sm:w-1/4">Chasis</h3>
+                        <div class="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left sm:text-center">
+                            <div><p class="stat-value">0</p><p class="stat-label">Production</p></div>
+                            <div><p class="stat-value">0</p><p class="stat-label">QC</p></div>
+                            <div><p class="stat-value">0</p><p class="stat-label">Defect</p></div>
+                            <div><p class="stat-value">0</p><p class="stat-label">Repair</p></div>
+                        </div>
+                    </div>
+                    <!-- Cushion -->
+                    <div id="cushion-stats" class="p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                        <h3 class="text-xl font-semibold text-white mb-4 sm:mb-0 sm:w-1/4">Cushion</h3>
+                        <div class="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left sm:text-center">
+                            <div><p class="stat-value">0</p><p class="stat-label">Production</p></div>
+                            <div><p class="stat-value">0</p><p class="stat-label">QC</p></div>
+                            <div><p class="stat-value">0</p><p class="stat-label">Defect</p></div>
+                            <div><p class="stat-value">0</p><p class="stat-label">Repair</p></div>
+                        </div>
+                    </div>
+                    <!-- Headrest -->
+                    <div id="headrest-stats" class="p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                        <h3 class="text-xl font-semibold text-white mb-4 sm:mb-0 sm:w-1/4">Headrest</h3>
+                        <div class="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left sm:text-center">
+                            <div><p class="stat-value">0</p><p class="stat-label">Production</p></div>
+                            <div><p class="stat-value">0</p><p class="stat-label">QC</p></div>
+                            <div><p class="stat-value">0</p><p class="stat-label">Defect</p></div>
+                            <div><p class="stat-value">0</p><p class="stat-label">Repair</p></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Today's Report -->
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-white mb-4">Today's Report</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div>
+                            <p id="today-production" class="stat-value2">0/0</p>
+                            <p class="stat-label">Target Production</p>
+                        </div>
+                        <div>
+                            <p id="today-prod-rate" class="stat-value2 rate-orange">0%</p>
+                            <p class="stat-label">Production Rate</p>
+                        </div>
+                        <div>
+                            <p id="today-defect-rate" class="stat-value2 rate-red">0%</p>
+                            <p class="stat-label">Defect Rate</p>
+                        </div>
+                        <div>
+                            <p id="today-repair-rate" class="stat-value2 rate-green">0%</p>
+                            <p class="stat-label">Repair Rate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Report -->
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-white mb-4">Weekly Report</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div>
+                            <p id="weekly-production" class="stat-value2">0/0</p>
+                            <p class="stat-label">Target Production</p>
+                        </div>
+                        <div>
+                            <p id="weekly-prod-rate" class="stat-value2 rate-orange">0%</p>
+                            <p class="stat-label">Production Rate</p>
+                        </div>
+                        <div>
+                            <p id="weekly-defect-rate" class="stat-value2 rate-red">0%</p>
+                            <p class="stat-label">Defect Rate</p>
+                        </div>
+                        <div>
+                            <p id="weekly-repair-rate" class="stat-value2 rate-green">0%</p>
+                            <p class="stat-label">Repair Rate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Chart -->
+            <div class="lg:col-span-1 space-y-6">
+                <div class="card h-full flex flex-col items-center justify-center">
+                    <h3 class="text-xl font-semibold text-white mb-4">Today's Production Breakdown</h3>
+                    <div class="w-full max-w-xs mx-auto">
+                        <canvas id="productionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- GSheets Link -->
+        <div class="text-center mt-8">
+            <a id="gsheets-link" href="#" target="_blank" class="bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-lg hover:bg-white transition-colors">
+                GSheets Link
+            </a>
+        </div>
+    </div>
+</body>
+</html>
